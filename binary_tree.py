@@ -44,6 +44,24 @@ class BinaryTree:
 
         print(node, end='')
 
+    def get_height(self, node=None):
+        if not node:
+            node = self.root
+
+        height_left = 0
+        height_right = 0
+
+        if node.left:
+            height_left = self.get_height(node.left)
+
+        if node.right:
+            height_right = self.get_height(node.right)
+
+        if height_left > height_right:
+            return height_left + 1
+        else:
+            return height_right + 1
+
 
 if __name__ == "__main__":
     # InOrder
@@ -68,23 +86,25 @@ if __name__ == "__main__":
     n2.right = n3
     inorder_tree.root = n2
     inorder_tree.inorder_traversal()
-
     print()
+    print('Altura:', inorder_tree.get_height())
+
     # PostOrder
     postorder_tree = BinaryTree()
-    n1 = Node('A')
-    n2 = Node('B')
-    n3 = Node('C')
-    n4 = Node('D')
-    n5 = Node('E')
-    n6 = Node('F')
-    n7 = Node('G')
-    n8 = Node('H')
-    n9 = Node('I')
-    n0 = Node('J')
+    n1 = Node('I')
+    n2 = Node('N')
+    n3 = Node('S')
+    n4 = Node('C')
+    n5 = Node('R')
+    n6 = Node('E')
+    n7 = Node('V')
+    n8 = Node('A')
+    n11 = Node('-')
+    n9 = Node('S')
+    n10 = Node('E')
 
-    n0.left = n6
-    n0.right = n9
+    n10.left = n6
+    n10.right = n9
     n6.left = n1
     n6.right = n5
     n5.left = n2
@@ -92,6 +112,9 @@ if __name__ == "__main__":
     n4.right = n3
     n9.left = n8
     n8.right = n7
+    n9.right = n11
 
-    postorder_tree.root = n0
+    postorder_tree.root = n10
     postorder_tree.postorder_traversal()
+    print()
+    print('Altura:', postorder_tree.get_height())
