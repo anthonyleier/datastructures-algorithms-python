@@ -1,6 +1,9 @@
 from binary_tree import BinaryTree, Node
 
 
+ROOT = 'ROOT'
+
+
 class BinarySearchTree(BinaryTree):
     def insert(self, value):
         parent = None
@@ -33,8 +36,8 @@ class BinarySearchTree(BinaryTree):
         if value > node.value:
             return self._another_search(value, node.right)
 
-    def search(self, value, node=0):
-        if node == 0:
+    def search(self, value, node=ROOT):
+        if node == ROOT:
             node = self.root
 
         if not node or node.value == value:

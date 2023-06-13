@@ -1,3 +1,9 @@
+from fila import Fila
+
+
+ROOT = 'ROOT'
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -19,8 +25,8 @@ class BinaryTree:
             self.root = None
 
     # Percurso em ordem simétrica (InOrder)
-    def inorder_traversal(self, node=None):
-        if not node:
+    def inorder_traversal(self, node=ROOT):
+        if node == ROOT:
             node = self.root
 
         if node.left:
@@ -34,8 +40,8 @@ class BinaryTree:
             # print(')', end='')
 
     # Percurso em Pós-Ordem (PostOrder)
-    def postorder_traversal(self, node=None):
-        if not node:
+    def postorder_traversal(self, node=ROOT):
+        if node == ROOT:
             node = self.root
 
         if node.left:
@@ -46,8 +52,8 @@ class BinaryTree:
 
         print(node, end='')
 
-    def get_height(self, node=None):
-        if not node:
+    def get_height(self, node=ROOT):
+        if node == ROOT:
             node = self.root
 
         height_left = 0
@@ -63,6 +69,24 @@ class BinaryTree:
             return height_left + 1
         else:
             return height_right + 1
+
+    # Percurso em ordem linha a linha
+    def levelorder_traversal(self, node=ROOT):
+        if node == ROOT:
+            node = self.root
+
+        fila = Fila()
+        fila.adicionar(node)
+        while not fila.esta_vazia():
+            node = fila.remover()
+
+            if node:
+                if node.left:
+                    fila.adicionar(node.left)
+                if node.right:
+                    fila.adicionar(node.right)
+
+                print(node)
 
 
 if __name__ == "__main__":
@@ -90,6 +114,7 @@ if __name__ == "__main__":
     inorder_tree.inorder_traversal()
     print()
     print('Altura:', inorder_tree.get_height())
+    inorder_tree.levelorder_traversal()
 
     # PostOrder
     postorder_tree = BinaryTree()
@@ -120,3 +145,4 @@ if __name__ == "__main__":
     postorder_tree.postorder_traversal()
     print()
     print('Altura:', postorder_tree.get_height())
+

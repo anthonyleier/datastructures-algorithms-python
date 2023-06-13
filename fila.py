@@ -4,12 +4,10 @@ class Fila:
 
     def adicionar(self, elemento):
         self.dados.append(elemento)
-        print(self)
 
     def remover(self):
         if not self.esta_vazia():
-            self.dados.pop(0)
-        print(self)
+            return self.dados.pop(0)
 
     def tamanho(self):
         return len(self.dados)
