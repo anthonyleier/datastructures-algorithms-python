@@ -1,5 +1,5 @@
 import random
-from sorting_functions import bubblesort, insertionsort, selectionsort, mergesort, quicksort
+from sorting import bubblesort, insertionsort, selectionsort, mergesort, quicksort
 
 
 random_sample = random.sample(range(1, 100), 10)
