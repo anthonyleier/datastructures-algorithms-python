@@ -9,8 +9,10 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self, value=None):
-        if value:
+    def __init__(self, value=None, node=None):
+        if node:
+            self.root = node
+        elif value:
             node = Node(value)
             self.root = node
         else:
