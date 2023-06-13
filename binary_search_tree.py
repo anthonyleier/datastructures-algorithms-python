@@ -51,11 +51,36 @@ class BinarySearchTree(BinaryTree):
         else:
             return node
 
+    def remove(self, value, node=ROOT):
+        if node == ROOT:
+            node = self.root
+
+        if not node:
+            return node
+
+        if value < node.value:
+            node.left = self.remove(value, node.left)
+        elif value > node.value:
+            node.right = self.remove(value, node.right)
+        else:
+            if not node.left:
+                return node.right
+            elif not node.right:
+                return node.left
+            else:
+                substitute = self.get_lowest_value(node.right)
+                node.value = substitute
+                node.right = self.remove(substitute, node.right)
+
+        return node
+
 
 if __name__ == "__main__":
     binary_search_tree = BinarySearchTree()
     binary_search_tree.insert(61)
     binary_search_tree.insert(89)
+    binary_search_tree.insert(100)
+    binary_search_tree.insert(90)
     binary_search_tree.insert(66)
     binary_search_tree.insert(43)
     binary_search_tree.insert(51)
@@ -87,3 +112,12 @@ if __name__ == "__main__":
 
     print('O menor valor é', binary_search_tree.get_lowest_value())
     print('O maior valor é', binary_search_tree.get_highest_value())
+
+    binary_search_tree.remove(55)
+    binary_search_tree.remove(90)
+
+    print('----------')
+    print('Levelorder Traversal')
+    binary_search_tree.levelorder_traversal()
+    print()
+    print('----------')
