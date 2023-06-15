@@ -1,57 +1,57 @@
 class HashTable:
-    def __init__(self, tamanho):
-        self.tamanho = tamanho
-        self.dados = [[] for _ in range(tamanho)]
+    def __init__(self, size):
+        self.size = size
+        self.data = [[] for _ in range(size)]
 
-    def montar_hash(self, chave):
-        return hash(chave) % self.tamanho
+    def generate_hash(self, key):
+        return hash(key) % self.size
 
-    def adicionar(self, chave, valor):
-        indice = self.montar_hash(chave)
-        self.dados[indice].append([chave, valor])
+    def add(self, key, value):
+        index = self.generate_hash(key)
+        self.data[index].append([key, value])
 
-    def procurar(self, chave):
-        indice = self.montar_hash(chave)
-        dado = self.dados[indice]
-        for item in dado:
-            if chave == item[0]:
+    def search(self, key):
+        index = self.generate_hash(key)
+        info = self.data[index]
+        for item in info:
+            if key == item[0]:
                 return item[1]
         return None
 
-    def remover(self, chave):
-        indice = self.montar_hash(chave)
-        dado = self.dados[indice]
-        for item in dado:
-            if chave == item[0]:
-                dado.remove(item)
+    def remove(self, key):
+        index = self.generate_hash(key)
+        info = self.data[index]
+        for item in info:
+            if key == item[0]:
+                info.remove(item)
                 return
         raise KeyError('Chave não encontrada')
 
     def __str__(self):
-        texto = ""
-        for indice, dado in enumerate(self.dados):
-            for item in dado:
-                texto += f"({indice}, {item[0]}, {item[1]})"
-        return texto
+        text = ""
+        for index, info in enumerate(self.data):
+            for item in info:
+                text += f"({index}, {item[0]}, {item[1]})"
+        return text
 
 
 if __name__ == "__main__":
     hashtable = HashTable(10)
-    hashtable.adicionar('Coordenador', 'Laura')
-    hashtable.adicionar('Gerente', 'João')
-    hashtable.adicionar('Desenvolvedor', 'Carlos')
-    hashtable.adicionar('Estagiário', 'Mariana')
-    hashtable.adicionar('Desenvolvedor', 'Pedro')
-    hashtable.adicionar('Gerente', 'Lucas')
-    hashtable.adicionar('Analista', 'Ana')
-    hashtable.adicionar('Gerente', 'Mariana')
-    hashtable.adicionar('Estagiário', 'Pedro')
-    hashtable.adicionar('Analista', 'Laura')
+    hashtable.add('Coordenador', 'Laura')
+    hashtable.add('Gerente', 'João')
+    hashtable.add('Desenvolvedor', 'Carlos')
+    hashtable.add('Estagiário', 'Mariana')
+    hashtable.add('Desenvolvedor', 'Pedro')
+    hashtable.add('Gerente', 'Lucas')
+    hashtable.add('Analista', 'Ana')
+    hashtable.add('Gerente', 'Mariana')
+    hashtable.add('Estagiário', 'Pedro')
+    hashtable.add('Analista', 'Laura')
     print(hashtable)
 
-    print(hashtable.procurar('Gerente'))
-    print(hashtable.procurar('Estagiário'))
+    print(hashtable.search('Gerente'))
+    print(hashtable.search('Estagiário'))
 
-    hashtable.remover('Gerente')
-    hashtable.remover('Desenvolvedor')
+    hashtable.remove('Gerente')
+    hashtable.remove('Desenvolvedor')
     print(hashtable)

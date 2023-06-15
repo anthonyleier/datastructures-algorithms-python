@@ -87,4 +87,4 @@ def postorder_tree_test():
 
 if __name__ == "__main__":
     inorder_tree_test()
-    # postorder_tree_test()
+    postorder_tree_test()

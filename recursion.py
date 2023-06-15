@@ -1,13 +1,13 @@
-def fibonacci(numero):
-    if numero == 1 or numero == 2:
+def fibonacci(number):
+    if number == 1 or number == 2:
         return 1
-    return fibonacci(numero-1) + fibonacci(numero-2)
+    return fibonacci(number-1) + fibonacci(number-2)
 
 
-def fatorial(numero):
-    if numero == 1:
+def factorial(number):
+    if number == 1:
         return 1
-    return numero * fatorial(numero-1)
+    return number * factorial(number-1)
 
 
 if __name__ == "__main__":
@@ -16,13 +16,13 @@ if __name__ == "__main__":
     print(fibonacci(6))  # 8
     print(fibonacci(7))  # 13
 
-    print(fatorial(1))  # 1
-    print(fatorial(2))  # 2
-    print(fatorial(3))  # 6
-    print(fatorial(4))  # 24
-    print(fatorial(5))  # 120
-    print(fatorial(6))  # 720
-    print(fatorial(7))  # 5040
-    print(fatorial(8))  # 40320
-    print(fatorial(9))  # 362880
-    print(fatorial(10))  # 3628800
+    print(factorial(1))  # 1
+    print(factorial(2))  # 2
+    print(factorial(3))  # 6
+    print(factorial(4))  # 24
+    print(factorial(5))  # 120
+    print(factorial(6))  # 720
+    print(factorial(7))  # 5040
+    print(factorial(8))  # 40320
+    print(factorial(9))  # 362880
+    print(factorial(10))  # 3628800

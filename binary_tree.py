@@ -1,4 +1,4 @@
-from fila import Fila
+from queue import Queue
 
 
 ROOT = 'ROOT'
@@ -75,15 +75,15 @@ class BinaryTree:
         if node == ROOT:
             node = self.root
 
-        fila = Fila()
-        fila.adicionar(node)
-        while not fila.esta_vazia():
-            node = fila.remover()
+        queue = Queue()
+        queue.add(node)
+        while not queue.is_empty():
+            node = queue.remove()
 
             if node:
                 if node.left:
-                    fila.adicionar(node.left)
+                    queue.add(node.left)
                 if node.right:
-                    fila.adicionar(node.right)
+                    queue.add(node.right)
 
                 print(node, end=',')

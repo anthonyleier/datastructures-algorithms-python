@@ -25,14 +25,14 @@ def selectionsort(array):
     n = len(array)
 
     for j in range(n-1):
-        minor_index = j
+        lowest_index = j
 
         for i in range(j, n):
-            if array[i] < array[minor_index]:
-                minor_index = i
+            if array[i] < array[lowest_index]:
+                lowest_index = i
 
-        if array[j] > array[minor_index]:
-            array[j], array[minor_index] = array[minor_index], array[j]
+        if array[j] > array[lowest_index]:
+            array[j], array[lowest_index] = array[lowest_index], array[j]
 
 
 def mergesort(array, start=0, end=None):
@@ -40,10 +40,10 @@ def mergesort(array, start=0, end=None):
         end = len(array)
 
     if (end - start > 1):
-        meio = (end + start) // 2
-        mergesort(array, start, meio)
-        mergesort(array, meio, end)
-        merge(array, start, meio, end)
+        middle = (end + start) // 2
+        mergesort(array, start, middle)
+        mergesort(array, middle, end)
+        merge(array, start, middle, end)
 
 
 def merge(array, start, middle, end):
